@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# supabase local/CLI artifacts
+supabase/.temp/
+supabase/.branches/
+.supabase/
+
+# data exports (contain real emails + password hashes — keep out of git)
+supabase/exports/
