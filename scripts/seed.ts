@@ -328,10 +328,16 @@ async function main() {
   if (unlockErr) throw new Error(`contact_unlocks: ${unlockErr.message}`);
   console.log(`  ${unlockRows.length} contact unlocks created.`);
 
+  // ----- Merchandise marketplace (products + orders) ------------------------
+  console.log("Seeding merchandise marketplace...");
+  const merch = await seedMerch(admin);
+  console.log(`  ${merch.products} products, ${merch.orders} orders created.`);
+
   console.log(
     `\nDone. Seeded: 1 admin, ${schoolIds.length} schools (${studentIds.length} students), ` +
     `${INDIVIDUAL_COUNT} individuals, ${recruiterIds.length} recruiters, ` +
-    `${recruiterIds.length * JOBS_PER_RECRUITER} job listings, ${unlockRows.length} contact unlocks.`,
+    `${recruiterIds.length * JOBS_PER_RECRUITER} job listings, ${unlockRows.length} contact unlocks, ` +
+    `${merch.products} products, ${merch.orders} orders.`,
   );
   console.log("\nLogin credentials (password for ALL accounts: " + PASSWORD + "):");
   console.log("  School     : diya@workable.org");
